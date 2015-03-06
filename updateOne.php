@@ -15,11 +15,10 @@
 	$isDone      = array_key_exists('isDone', $_GET)      ? $_GET['isDone']      : null;
 
 	if (!$data->updateOne($id, $title, $description, $isDone)) {
-		echo "{'result': 'failure'}";
-		return;
+		return json_encode(['result' => 'failure']);
 	}
 
-	echo "{'result': 'success'}";
+	echo json_encode(['result' => 'success']);
 	return;
 
 ?>

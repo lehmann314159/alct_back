@@ -42,11 +42,16 @@
 	};
 
 	var updateTask = function() {
-		alert(JSON.stringify(data));
-		$.getJSON("updateOne.php", JSON.stringify($("form").serializeArray()), function(data) {
+		console.dir($("form").serialize());
+		var pList = {};
+		$.each($("form").serializeArray(), function(key, value) {
+			pList[value.name] = value.value;
 		});
-		$("body").empty();
-		makeTaskList();
+		console.dir(pList);
+		$.getJSON("updateOne.php?" + $("form").serialize(), function(data) {
+			$("body").empty();
+			makeTaskList();
+		});
 	}
 
 
