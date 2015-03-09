@@ -4,16 +4,16 @@
 
 	// We need an id
 	if (!array_key_exists('id', $_GET)) {
-		echo "{'result': 'failure'}";
+		echo json_encode(['result' => 'failure']);
 		return;
 	}
 
 	if (!$data->deleteOne($_GET['id'])) {
-		echo "{'result': 'failure'}";
+		echo json_encode(['result' => 'failure']);
 		return;
 	}
 
-	echo "{'result': 'success'}";
+	echo json_encode(['result' => 'success']);
 	return;
 
 ?>

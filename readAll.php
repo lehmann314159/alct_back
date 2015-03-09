@@ -2,8 +2,8 @@
 	require('Data.php');
 
 	$data = new Data();
-	if (!$rows = $data->readAll($_GET['id'])) {
-		echo "[]";
+	if (!$rows = $data->readAll()) {
+		echo json_encode([]);
 		return;
 	}
 

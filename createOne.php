@@ -11,11 +11,11 @@
 	$description = $_GET['description'];
 	$isDone      = $_GET['isDone'];
 	if (!$newId = $data->createOne($title, $description, $isDone)) {
-		echo "{'result': 'failure'}";
+		echo json_encode(['result' => 'failure']);
 		return;
 	}
 
-	echo "{'id': $newId} ";
+	echo json_encode(['id' => $newId]);
 	return;
 
 ?>

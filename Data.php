@@ -90,7 +90,7 @@ class Data {
         while ($aTask = fgets($handle)) {
 			list($header, $id, $fieldName, $payload) = explode("-", $aTask);
 			list ($payload, $junk) = explode(" ", $payload);
-			preg_replace('/_/', ' ', $payload);
+			$payload = preg_replace('/_/', ' ', $payload);
 
 			// This id might not yet exist
 			if (!array_key_exists($id, $this->__taskList)) {
@@ -114,8 +114,8 @@ class Data {
 			$isDone      = $aTask['isDone'];
 
 			# transform
-			preg_replace('/\s/', '_', $title);
-			preg_replace('/\s/', '_', $description);
+			$title = preg_replace('/ /', '_', $title);
+			$description = preg_replace('/ /', '_', $description);
 
 			# load
 			$string = "#task-$id-title-$title {}\n";

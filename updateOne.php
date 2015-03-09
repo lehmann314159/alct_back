@@ -4,7 +4,7 @@
 
 	// We need at least an id
 	if (!array_key_exists('id', $_GET)) {
-		echo "{'result': 'failure'}";
+		echo json_encode(['result' => 'failure']);
 		return;
 	}
 
@@ -15,7 +15,8 @@
 	$isDone      = array_key_exists('isDone', $_GET)      ? $_GET['isDone']      : null;
 
 	if (!$data->updateOne($id, $title, $description, $isDone)) {
-		return json_encode(['result' => 'failure']);
+		echo json_encode(['result' => 'failure']);
+		return;
 	}
 
 	echo json_encode(['result' => 'success']);

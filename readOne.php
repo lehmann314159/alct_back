@@ -3,16 +3,16 @@
 	$data = new Data();
 
 	if (!array_key_exists('id', $_GET)) {
-		echo "{}";
+		echo json_encode([]);
 		return;
 	}
 
 	if (!$row = $data->readOne($_GET['id'])) {
-		echo "{}";
+		echo json_encode([]);
 		return;
 	}
 
-	echo json_encode($row) . "<br>\n";
+	echo json_encode($row);
 	return;
 
 ?>
